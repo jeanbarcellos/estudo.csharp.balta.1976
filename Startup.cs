@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProductCatalog.Data;
+using ProductCatalog.Repositories;
+
 
 namespace ProductCatalog
 {
@@ -16,6 +18,8 @@ namespace ProductCatalog
             services.AddScoped<StoreDataContext, StoreDataContext>();
 
             services.AddControllers();
+
+            services.AddTransient<ProductRepository, ProductRepository>();
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação HTTP.
