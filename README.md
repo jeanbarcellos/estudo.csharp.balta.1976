@@ -8,6 +8,9 @@ Ref:
 - https://app.balta.io/player/1976
 - https://github.com/balta-io/1976
 
+<br>
+<br>
+<br>
 Anotações:
 
 <hr>
@@ -140,7 +143,7 @@ dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
 
 Referencia: https://www.npgsql.org/efcore/
 
-Para poder rodar comando no CLI. Adicionar no arquivo ```ProductCatalog.csproj```
+Para poder rodar comando no CLI. Adicionar no arquivo `ProductCatalog.csproj`
 
 ```xml
 <ItemGroup>
@@ -203,6 +206,7 @@ dotnet ef database update
 ### Aula 12 – Adicionando MVC
 
 **MVC**
+
 - Model, View Controller
 - Padrão para organização do projeto
 - Utilizada por várias linguagens
@@ -220,6 +224,7 @@ dotnet add pckage Microsoft.AspNetCore.Mvc
 ### Aula 13 – Rotas e CRUD
 
 **Rotas**
+
 - As rotas são importantes
 - Pode-se utilizar as rotas e verbos
 - Pode-se receber parâmetros pela URL ou Corpo da Requisição
@@ -311,9 +316,9 @@ Repository Pattern
 - A API receberá acesso de diferentes Apps
 - Visioná-la auxilia os Apps
 
-### Aula 19 – Cache (### Aula 54 do curso 1974)
+### Aula 19 – Cache (Aula 54 do curso 1974)
 
-### Aula 20 – Compression (### Aula 55 do curso 1974)
+### Aula 20 – Compression (Aula 55 do curso 1974)
 
 Instalar o pacote para compressão
 
@@ -335,6 +340,6 @@ http://localhost:5000/swagger
 
 ...
 
-### Aula 23 - Monitoramento - (### Aula 60 do curso 1974)
+### Aula 23 - Monitoramento - (Aula 60 do curso 1974)
 
 ...
