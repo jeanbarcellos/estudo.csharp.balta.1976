@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProductCatalog.Data;
 
 namespace ProductCatalog
 {
     public class Startup
     {
+
         // Este método é chamado pelo tempo de execução. Use este método para adicionar serviços ao contêiner.
         public void ConfigureServices(IServiceCollection services)
-        {
-            // Adicionar o serviço MVC a coleção de serviços
-            services.AddMvc();
+        {            // Adiciona o DataContext como dependência
+            services.AddScoped<StoreDataContext, StoreDataContext>();
+
+            services.AddControllers();
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação HTTP.
@@ -24,8 +27,13 @@ namespace ProductCatalog
                 app.UseDeveloperExceptionPage();
             }
 
-            // Adiciona MVC ao pipeline de execução do request
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
         }
     }
 }
