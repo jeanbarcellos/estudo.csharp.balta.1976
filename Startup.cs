@@ -14,10 +14,14 @@ namespace ProductCatalog
 
         // Este método é chamado pelo tempo de execução. Use este método para adicionar serviços ao contêiner.
         public void ConfigureServices(IServiceCollection services)
-        {            // Adiciona o DataContext como dependência
+        {
+            // Adiciona o DataContext como dependência
             services.AddScoped<StoreDataContext, StoreDataContext>();
 
             services.AddControllers();
+
+            // Adição do serviço de compressão de response.
+            services.AddResponseCompression();
 
             services.AddTransient<ProductRepository, ProductRepository>();
         }
@@ -38,6 +42,7 @@ namespace ProductCatalog
                 endpoints.MapControllers();
             });
 
+            app.UseResponseCompression();
         }
     }
 }
