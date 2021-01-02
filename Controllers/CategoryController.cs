@@ -19,6 +19,7 @@ namespace ProductCatalog.Controllers
 
         [HttpGet]
         [Route("v1/categories")]
+        [ResponseCache(Duration = 30)]
         public IEnumerable<Category> Get()
         {
             return _context.Categories.AsNoTracking().ToList();
@@ -37,6 +38,7 @@ namespace ProductCatalog.Controllers
 
         [HttpGet]
         [Route("v1/categories/{id}/products")]
+        [ResponseCache(Duration = 30)]
         public IEnumerable<Product> GetProducts(int id)
         {
             return _context.Products
