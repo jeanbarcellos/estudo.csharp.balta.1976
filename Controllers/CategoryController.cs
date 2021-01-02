@@ -5,16 +5,17 @@ using Microsoft.EntityFrameworkCore;
 using ProductCatalog.Data;
 using ProductCatalog.Models;
 using System;
+using ProductCatalog.Repositories;
 
 namespace ProductCatalog.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly StoreDataContext _context;
+        private readonly CategoryRepository _repository;
 
-        public CategoryController(StoreDataContext context)
+        public CategoryController(CategoryRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         [HttpGet]
@@ -22,18 +23,14 @@ namespace ProductCatalog.Controllers
         [ResponseCache(Duration = 30)]
         public IEnumerable<Category> Get()
         {
-            return _context.Categories.AsNoTracking().ToList();
+            return _repository.Get();
         }
 
         [HttpGet]
         [Route("v1/categories/{id}")]
         public Category get(int id)
         {
-            // Find() ainda não suporta AsNoTracking
-            return _context.Categories
-                .AsNoTracking()
-                .Where(x => x.Id == id)
-                .FirstOrDefault();
+            return _repository.Get(id);
         }
 
         [HttpGet]
@@ -41,18 +38,14 @@ namespace ProductCatalog.Controllers
         [ResponseCache(Duration = 30)]
         public IEnumerable<Product> GetProducts(int id)
         {
-            return _context.Products
-                .AsNoTracking()
-                .Where(x => x.CategoryId == id)
-                .ToList();
+            return _repository.GetProducts(id);
         }
 
         [HttpPost]
         [Route("v1/categories")]
         public Category Post([FromBody] Category category)
         {
-            _context.Categories.Add(category);
-            _context.SaveChanges();
+            _repository.Save(category);
 
             return category;
         }
@@ -61,8 +54,7 @@ namespace ProductCatalog.Controllers
         [Route("v1/categories")]
         public Category Put([FromBody] Category category)
         {
-            _context.Entry<Category>(category).State = EntityState.Modified;
-            _context.SaveChanges();
+            _repository.Update(category);
 
             return category;
         }
@@ -71,8 +63,7 @@ namespace ProductCatalog.Controllers
         [HttpDelete]
         public Category Delete([FromBody] Category category)
         {
-            _context.Categories.Remove(category);
-            _context.SaveChanges();
+            _repository.Delete(category);
 
             return category;
         }

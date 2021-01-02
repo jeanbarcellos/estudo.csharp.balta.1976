@@ -24,6 +24,7 @@ namespace ProductCatalog
             // Adição do serviço de compressão de response.
             services.AddResponseCompression();
 
+            services.AddTransient<CategoryRepository, CategoryRepository>();
             services.AddTransient<ProductRepository, ProductRepository>();
 
             services.AddSwaggerGen(x =>

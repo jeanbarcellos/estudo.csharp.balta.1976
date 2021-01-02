@@ -52,5 +52,14 @@ namespace ProductCatalog.Repositories
 
             return category;
         }
+
+        public IEnumerable<Product> GetProducts(int id)
+        {
+            return _context.Products
+                .AsNoTracking()
+                .Where(x => x.CategoryId == id)
+                .ToList();
+        }
+
     }
 }
