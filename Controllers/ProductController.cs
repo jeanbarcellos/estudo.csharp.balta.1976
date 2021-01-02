@@ -50,6 +50,19 @@ namespace ProductCatalog.Controllers
         [Route("v1/products")]
         public ResultViewModel Post([FromBody] EditorProductViewModel model)
         {
+            model.Validate();
+
+            if (model.Invalid)
+            {
+                return new ResultViewModel
+                {
+                    Success = false,
+                    Message = "Não foi possível cadastrar o produto",
+                    Data = model.Notifications
+                };
+            }
+
+
             var product = new Product();
             product.Title = model.Title;
             product.CategoryId = model.CategoryId;
@@ -76,7 +89,18 @@ namespace ProductCatalog.Controllers
         [Route("v1/products")]
         public ResultViewModel Put([FromBody] EditorProductViewModel model)
         {
-            var product = _context.Products.Find(model.id);
+            model.Validate();
+            if (model.Invalid)
+            {
+                return new ResultViewModel
+                {
+                    Success = false,
+                    Message = "Não foi possível alterar o produto",
+                    Data = model.Notifications
+                };
+            }
+
+            var product = _context.Products.Find(model.Id);
             product.Title = model.Title;
             product.CategoryId = model.CategoryId;
             // product.CreateDate = DateTime.Now; // Nunca altera a data de criação
