@@ -70,6 +70,21 @@ namespace ProductCatalog.Controllers
             };
         }
 
+        [HttpPost]
+        [Route("v2/products")]
+        public ResultViewModel Post([FromBody] Product product)
+        {
+            _repository.Save(product);
+
+            return new ResultViewModel
+            {
+                Success = true,
+                Message = "Produto cadastrado com sucesso!",
+                Data = product
+            };
+        }
+
+
         [HttpPut]
         [Route("v1/products")]
         public ResultViewModel Put([FromBody] EditorProductViewModel model)
