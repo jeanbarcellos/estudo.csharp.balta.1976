@@ -46,6 +46,11 @@ namespace ProductCatalog
             {
                 // Middleware para capturar instâncias System.Exception síncronas e assíncronas do pipeline e gera respostas de erro HTML.
                 app.UseDeveloperExceptionPage();
+
+                // Middleware para servir o Swagger gerado como um terminal JSON.
+                app.UseSwagger();
+                // Middleware para servir swagger-ui (HTML, JS, CSS, etc.), especificando o endpoint JSON Swagger
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProductCatalog V1"));
             }
 
             // Middleware de roteamento para rotear as requests (resolução de endpoint)
@@ -66,15 +71,6 @@ namespace ProductCatalog
 
             // Middleware para compactar dinamicamente as respostas HTTP.
             app.UseResponseCompression();
-
-            // Middleware para servir o Swagger gerado como um terminal JSON.
-            app.UseSwagger();
-            // Middleware para servir swagger-ui (HTML, JS, CSS, etc.), especificando o endpoint JSON Swagger
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Jean Barcellos - V1");
-            });
-
         }
     }
 }
