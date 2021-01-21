@@ -14,10 +14,10 @@ namespace ProductCatalog.Data
             optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=balta_1976;Username=postgres;Password=postgres;Port=5433");
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.ApplyConfiguration(new ProductMap());
-            builder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new ProductMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
         }
 
     }
