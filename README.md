@@ -1,18 +1,24 @@
-# Criando APIs com ASP.NET Core e EF Core (1976)
+*Repositório apenas para estudo*
 
-Neste curso vamos ver uma abordagem diferente na criação de
-APIs com ASP.NET Core, aprendendo a criar aplicações para cenários mais simples (CRUD Based).
+# Curso: Criando APIs com ASP.NET Core e EF Core (1976)
 
-Ref:
+Neste curso vamos ver uma abordagem diferente na criação de APIs com ASP.NET Core, aprendendo a criar aplicações para cenários mais simples (CRUD Based).
 
-- https://app.balta.io/player/1976
-- https://github.com/balta-io/1976
+Instrutor:
+
+* [André Baltiéri](balta.io)
+
+Referências:
+
+* https://app.balta.io/player/1976
+* https://github.com/balta-io/1976
 
 <br>
 <br>
-<br>
-Anotações:
 
+**Anotações**
+
+<hr>
 <hr>
 
 ## Introdução e Configurações do Ambiente
