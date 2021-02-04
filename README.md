@@ -6,7 +6,7 @@ Neste curso vamos ver uma abordagem diferente na criação de APIs com ASP.NET C
 
 Instrutor:
 
-* [André Baltiéri](balta.io)
+* [André Baltiéri](https://balta.io)
 
 Referências:
 
